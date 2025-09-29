@@ -12,6 +12,7 @@
 */
 #include "common.h"
 #include "FIFORequestChannel.h"
+#include <chrono>
 
 using namespace std;
 
@@ -86,6 +87,7 @@ int main (int argc, char *argv[]) {
 	    outfile.close();
 	  }
 	if(filename!=""){
+	  auto start = chrono::high_resolution_clock::now();
 	  int length;
 	  filemsg gl(0,0);
 	  length = sizeof(gl) + filename.size() + 1;
@@ -124,6 +126,10 @@ int main (int argc, char *argv[]) {
 	    }
 	  fclose(outfile);
 	  delete[] buf;
+	  auto end = chrono::high_resolution_clock::now();
+	  auto duration = chrono::duration_cast<chrono::milliseconds>(end-start);
+
+	  cout << fileSize << " " << "bytes " << "in " << duration.count() << " milliseconds" <<endl;
 	}
 	    	char buf[MAX_MESSAGE]; // 256
     		datamsg x(p, t, e);
@@ -164,6 +170,7 @@ int main (int argc, char *argv[]) {
 	    outfile.close();
 	  }
 	if(filename!=""){
+	  auto start = chrono::high_resolution_clock::now();
 	  int length;
 	  filemsg gl(0,0);
 	  length = sizeof(gl) + filename.size() + 1;
@@ -206,6 +213,10 @@ int main (int argc, char *argv[]) {
 	    }
 	  fclose(outfile);
 	  delete[] buf;
+	  auto end = chrono::high_resolution_clock::now();
+	  auto duration = chrono::duration_cast<chrono::milliseconds>(end-start);
+
+	  cout << fileSize << " " << "bytes " << "in " << duration.count() << " milliseconds" <<endl;
 
 	}
 	    	char buf[MAX_MESSAGE]; // 256
