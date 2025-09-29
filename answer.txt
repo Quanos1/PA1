@@ -1,0 +1,4 @@
+Question 1:
+As i transferred files of various sizes I noticed that the execution times seemed to increase linearlly with 1mb taking 0.24 seconds and 10mb taking 2.5 seconds. However files much larger than 20mb began to have issues where the virtual machine would freeze during the process and be unable to give time info after copying.
+Question 2:
+I believe the increasingly slow execution of my program was due to the limitations of the virtual machine and needing to make so many read and write operations due to the fact that only 256 bytes are moved at a time. This could be address by allowing larger chunks to go through so less read and write operations are needed.
